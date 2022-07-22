@@ -49,8 +49,14 @@ public class DishController
 		
 		if(dishOptional.isPresent())
 		{
-			repository.deleteById(id);
-			return ResponseEntity.ok(dishOptional.get());
+			Dish toDelete = dishOptional.get();
+			if(toDelete.getReviews().size()==0)
+			{
+				repository.deleteById(id);
+				return ResponseEntity.ok(dishOptional.get());
+			}
+			else
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).body("");
 		}
 		else
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("");

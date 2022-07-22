@@ -1,4 +1,4 @@
-
+package com.generation.dishes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +8,23 @@ import com.generation.dishes.model.entities.Dish;
 import com.generation.dishes.model.repositories.DishRepository;
 
 @SpringBootTest
-public class DishTest
+class TestProva 
 {
+
 	@Autowired
 	DishRepository repository;
 	@Test
 	void dishReadTest() 
 	{
-		Dish dish =  repository.getById(1);
+		Dish dish =  repository.findById(1).get();
 		//Dish dish = database.getDish(1);
 		
-		System.out.println("----------------------"+dish.getName()+"----------------------");
+		System.out.println("-\n-\n-\n-\n-\n-\n"+dish.getName()+"\n-\n-\n-\n-\n-\n-");
 	}
+	
+	@Test
+	void contextLoads() {
+	}
+
+	
 }
